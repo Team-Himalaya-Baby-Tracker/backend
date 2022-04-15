@@ -15,4 +15,14 @@ class Baby extends Model
     {
         return $this->belongsTo(ParentUser::class, 'parent_id');
     }
+
+    public function babySizeHistories()
+    {
+        return $this->hasMany(BabySizeHistory::class);
+    }
+
+    public function BabyWeightHistories()
+    {
+        return $this->hasMany(BabyWeightHistory::class);
+    }
 }

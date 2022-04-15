@@ -24,7 +24,7 @@ class ParentUser extends Model
 
     public function partener(): BelongsTo
     {
-        return $this->belongsTo(__CLASS__, 'partener_id');
+        return $this->belongsTo(ParentUser::class, 'partener_id');
     }
 
     public function babiesRelation()

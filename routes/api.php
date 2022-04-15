@@ -3,6 +3,7 @@
 use App\Actions\Auth\ResetPassword;
 use App\Actions\Auth\SendResetPasswordCode;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BabiesController;
 use App\Http\Controllers\MeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,7 @@ Route::post('reset-password', ResetPassword::class)->middleware('guest');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('me', [MeController::class, 'me']);
+    Route::group(['prefix' => 'babies'] , function () {
+        Route::get('' , [BabiesController::class , 'index']);
+    });
 });
