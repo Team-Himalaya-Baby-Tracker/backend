@@ -24,7 +24,7 @@ Route::post('reset-password', ResetPassword::class)->middleware('guest');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('me', [MeController::class, 'me']);
+    Route::resource('babies', BabiesController::class);
     Route::group(['prefix' => 'babies'] , function () {
-        Route::get('' , [BabiesController::class , 'index']);
     });
 });
