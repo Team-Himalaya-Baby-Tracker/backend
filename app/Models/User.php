@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserResetPassword::class);
     }
+
+    public function toParentUser(): ParentUser
+    {
+        return ParentUser::find($this->id);
+    }
 }

@@ -39,4 +39,22 @@ class ParentUser extends Model
                 Baby::query()->where('parent_id', '=', $this->partener_id)
             );
     }
+
+    public function recivedParentInvitations()
+    {
+        return $this->hasMany(PartnerInvitation::class, 'invited_id')->where('status' , 'pending');
+    }
+
+    public function sentParentInvitations()
+    {
+        return $this->hasMany(PartnerInvitation::class, 'inviter_id')->where('status' , 'pending');
+    }
+
+    public function sendParentInvitation(ParentUser $parentUser)
+    {
+      return  $this->sentParentInvitations()->create([
+            'invited_id' => $parentUser->id,
+            'status' => 'pending',
+        ]);
+    }
 }
