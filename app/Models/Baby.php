@@ -25,4 +25,9 @@ class Baby extends Model
     {
         return $this->hasMany(BabyWeightHistory::class);
     }
+
+    public function diaperData()
+    {
+        return $this->hasMany(DiaperData::class);
+    }
 }

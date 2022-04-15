@@ -16,6 +16,13 @@ class BabyStoreRequest extends FormRequest
         ];
     }
 
+    protected function prepareForValidation()
+    {
+        if($this->phono === 'null' || $this->phono === '') {
+            $this->merge(['photo' => null]);
+        }
+    }
+
     public function authorize(): bool
     {
         return true;
