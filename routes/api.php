@@ -5,6 +5,7 @@ use App\Actions\Auth\SendResetPasswordCode;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BabiesController;
 use App\Http\Controllers\BabySizeController;
+use App\Http\Controllers\BabyWeightController;
 use App\Http\Controllers\DiaperDataController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\PartnerController;
@@ -33,6 +34,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('{baby}/diapers', [DiaperDataController::class, 'store']);
         Route::get('{baby}/sizes', [BabySizeController::class, 'index']);
         Route::post('{baby}/sizes', [BabySizeController::class, 'store']);
+        Route::get('{baby}/weights', [BabyWeightController::class, 'index']);
+        Route::post('{baby}/weights', [BabyWeightController::class, 'store']);
     });
     Route::group(['prefix' => 'invitations'], function () {
         Route::get('sent', [PartnerController::class, 'showSentInvitations']);

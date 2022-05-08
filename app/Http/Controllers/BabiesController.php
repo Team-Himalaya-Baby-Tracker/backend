@@ -50,7 +50,7 @@ class BabiesController extends Controller
      */
     public function show(Baby $baby)
     {
-        $baby->load(['babySizeHistories', 'BabyWeightHistories']);
+        $baby->load(['babySizeHistories', 'babyWeightHistories', 'diaperData']);
         return new BabyResource($baby);
     }
 
