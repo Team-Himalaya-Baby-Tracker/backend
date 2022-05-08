@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\AuthController;
 
+use App\Rules\isValidPasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SignupRequest extends FormRequest
@@ -11,9 +12,9 @@ class SignupRequest extends FormRequest
         return [
             'name' => ['required', 'min:2'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'min:8'],
+            'password' => ['required', 'min:8', new isValidPasswordRule()],
             'type' => ['required', 'in:parent,baby_sitter'],
-            'birth_date' => ['required', 'before:-13 years'],
+            'birth_date' => ['required', 'before:-14 years'],
         ];
     }
 
