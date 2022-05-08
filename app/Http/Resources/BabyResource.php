@@ -23,7 +23,7 @@ class BabyResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 
-            'baby_weight_histories' => BabyWeightHistoryResource::collection($this->whenLoaded('BabyWeightHistories')),
+            'baby_weight_histories' => BabyWeightHistoryResource::collection($this->whenLoaded('babyWeightHistories')),
             'baby_size_histories' => BabySizeHistoryResource::collection($this->whenLoaded('babySizeHistories')),
             'parent' => new ParentUserResource($this->whenLoaded('parent')),
         ];
