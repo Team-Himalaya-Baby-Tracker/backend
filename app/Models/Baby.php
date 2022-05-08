@@ -31,8 +31,13 @@ class Baby extends Model
         return $this->hasMany(DiaperData::class);
     }
 
-    public function belongsToUser(User $user):bool
+    public function breastFeedRecords()
     {
-        return $this->parent->id === $user->id ||  $this->parent->partener_id === $user->id;
+        return $this->hasMany(BreastFeedRecord::class);
+    }
+
+    public function belongsToUser(User $user): bool
+    {
+        return $this->parent->id === $user->id || $this->parent->partener_id === $user->id;
     }
 }

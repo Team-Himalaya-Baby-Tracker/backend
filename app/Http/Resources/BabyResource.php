@@ -26,6 +26,7 @@ class BabyResource extends JsonResource
             'baby_weight_histories' => BabyWeightHistoryResource::collection($this->whenLoaded('babyWeightHistories')),
             'baby_size_histories' => BabySizeHistoryResource::collection($this->whenLoaded('babySizeHistories')),
             'diaper_data' => DiaperDataResource::collection($this->whenLoaded('diaperData')),
+            'breast_feed_records' => BreastFeedRecordResource::collection($this->whenLoaded('breastFeedRecords')),
             'parent' => new ParentUserResource($this->whenLoaded('parent')),
         ];
     }
