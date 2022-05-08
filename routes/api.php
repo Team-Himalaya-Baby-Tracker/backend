@@ -29,8 +29,16 @@ Route::post('reset-password', ResetPassword::class)->middleware('guest');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('me', [MeController::class, 'me']);
-    Route::resource('babies', BabiesController::class);
+
+    Route::get('babies', [BabiesController::class, 'index']);
+    Route::post('babies', [BabiesController::class, 'store']);
+
     Route::group(['prefix' => 'babies', 'middleware' => 'my-baby'], function () {
+        Route::get('{baby}', [BabiesController::class, 'show']);
+        Route::put('{baby}', [BabiesController::class, 'update']);
+        Route::delete('{baby}', [BabiesController::class, 'destroy']);
+        //*************
+
         Route::get('{baby}/diapers', [DiaperDataController::class, 'index']);
         Route::post('{baby}/diapers', [DiaperDataController::class, 'store']);
         Route::get('{baby}/sizes', [BabySizeController::class, 'index']);

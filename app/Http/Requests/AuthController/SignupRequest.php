@@ -11,10 +11,10 @@ class SignupRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:2'],
-            'email' => ['required', 'email', 'unique:users,email'],
+            'email' => ['required', 'email:dns,rfc', 'unique:users,email'],
             'password' => ['required', 'min:8', new isValidPasswordRule()],
             'type' => ['required', 'in:parent,baby_sitter'],
-            'birth_date' => ['required', 'before:-14 years'],
+            'birth_date' => ['required', 'before:-14 years' ,'date'],
         ];
     }
 
