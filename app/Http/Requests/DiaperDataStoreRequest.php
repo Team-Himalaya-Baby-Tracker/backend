@@ -11,6 +11,7 @@ class DiaperDataStoreRequest extends FormRequest
         return [
             'type' => ['required', 'array'],
             'notes' => ['nullable', 'string', 'max:1000'],
+            'wet_type' =>[ 'nullable', 'string', 'max:100'],
         ];
     }
 

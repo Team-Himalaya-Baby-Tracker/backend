@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BabiesController;
 use App\Http\Controllers\BabySizeController;
 use App\Http\Controllers\BabyWeightController;
+use App\Http\Controllers\BottleFeedController;
 use App\Http\Controllers\BreastFeedRecordController;
 use App\Http\Controllers\DiaperDataController;
 use App\Http\Controllers\MeController;
@@ -48,6 +49,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
         Route::get('{baby}/breast-feed', [BreastFeedRecordController::class, 'index']);
         Route::post('{baby}/breast-feed', [BreastFeedRecordController::class, 'store']);
+
+        Route::get('{baby}/bottle-feed', [BottleFeedController::class, 'index']);
+        Route::post('{baby}/bottle-feed', [BottleFeedController::class, 'store']);
     });
     Route::group(['prefix' => 'invitations'], function () {
         Route::get('sent', [PartnerController::class, 'showSentInvitations']);
