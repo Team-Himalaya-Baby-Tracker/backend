@@ -22,7 +22,7 @@ class BabiesController extends Controller
      */
     public function index()
     {
-        $parent = ParentUser::find(auth()->id())->load('partener');
+        $parent = ParentUser::findOrFail(auth()->id())->load('partener');
         return BabyResource::collection($parent->babies()->with(['babySizeHistories', 'BabyWeightHistories'])->get());
     }
 
