@@ -36,6 +36,11 @@ class Baby extends Model
         return $this->hasMany(BreastFeedRecord::class);
     }
 
+    public function bottleFeeds()
+    {
+        return $this->hasMany(BottleFeed::class);
+    }
+
     public function belongsToUser(User $user): bool
     {
         return $this->parent->id === $user->id || $this->parent->partener_id === $user->id;
