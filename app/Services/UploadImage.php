@@ -102,6 +102,6 @@ class UploadImage
      */
     protected function buildAbsoluteFilePath($name, $bucket, $folder)
     {
-        return "https://s3-us-west-2.amazonaws.com/{$bucket}/{$this->buildFilePath($name,$folder)}";
+        return "https://s3-us-east-2.amazonaws.com/{$bucket}/{$this->buildFilePath($name,$folder)}";
     }
 }
