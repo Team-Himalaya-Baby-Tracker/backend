@@ -15,7 +15,9 @@ class DiaperDataController extends Controller
 
     public function store(DiaperDataStoreRequest $request, Baby $baby)
     {
-        abort_if(!$baby->belongsToUser(auth()->user()), 403, 'Baby does not belong to user');
+        if (auth()->user()->type == 'parent') {
+            abort_if(!$baby->belongsToUser(auth()->user()), 403, 'Baby does not belong to user');
+        }
         $diaperData = $baby->diaperData()->create($request->validated());
 
         return new DiaperDataResource($diaperData);

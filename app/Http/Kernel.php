@@ -64,5 +64,7 @@ class Kernel extends HttpKernel
 		    'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 		    'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 		    'my-baby' => \App\Http\Middleware\BabyBelongsToUserMiddleware::class,
+            'baby-sitter-access' => \App\Http\Middleware\BabySitterAccessMiddleware::class,
+            'is-parent' => \App\Http\Middleware\IsParentMiddleware::class,
     ];
 }

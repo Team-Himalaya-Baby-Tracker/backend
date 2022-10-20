@@ -14,7 +14,9 @@ class BabySizeController extends Controller
 
     public function store(Baby $baby)
     {
-        abort_if(!$baby->belongsToUser(auth()->user()), 403 , 'You can not add a size history to this baby');
+        if (auth()->user()->type == 'parent') {
+            abort_if(!$baby->belongsToUser(auth()->user()), 403, 'Baby does not belong to user');
+        }
         $validatedData = request()->validate([
             'size' => 'required|numeric|min:0',
             'created_at' => 'nullable|date',
