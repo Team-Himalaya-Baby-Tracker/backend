@@ -21,7 +21,6 @@ class Baby extends Model
 
             if (auth()->user()->type == 'baby_sitter') {
                 $babies = BabySitterInvitation::where('baby_sitter_id', auth()->id())
-                    ->whereNotNull('accepted_at')
                     ->whereNull('declined_at')
                     ->where('expires_at', '>', now())
                     ->get()
