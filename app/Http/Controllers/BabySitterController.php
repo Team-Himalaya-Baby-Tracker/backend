@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Babies\BabyUpdateRequest;
-use App\Http\Resources\BabyResource;
 use App\Http\Resources\BabySitterInvitationResource;
 use App\Http\Resources\BabySitterUserResource;
-use App\Models\Baby;
 use App\Models\BabySitterInvitation;
 use App\Models\BabySitterUser;
 use Illuminate\Http\Request;
@@ -49,7 +46,11 @@ class BabySitterController extends Controller
 
     public function listInvitations()
     {
-        $invitations = BabySitterInvitation::with('parent', 'baby')
+        $invitations = BabySitterInvitation::query()
+            ->with([
+                'parent',
+                'baby'=>fn($q) => $q->withoutGlobalScopes(),
+            ])
             ->where('baby_sitter_id', auth()->id())
             ->whereNull('declined_at')
             ->whereNull('accepted_at')
