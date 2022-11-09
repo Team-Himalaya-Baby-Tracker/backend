@@ -35,4 +35,14 @@ class BabySitterUser extends Model
     {
         return $this->hasMany(BabySitterInvitation::class, 'baby_sitter_id');
     }
+
+    public function rates()
+    {
+        return $this->hasMany(BabySitterRating::class, 'baby_sitter_id');
+    }
+
+    public function getRateAttribute()
+    {
+        return round($this->rates()->avg('rating'), 2);
+    }
 }

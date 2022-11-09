@@ -20,6 +20,7 @@ class BabySitterUserResource extends JsonResource
             'email' => $this->email,
             'photo' => $this->photo,
             'type' => $this->type,
+            'rate' => $this->rate,
             'birth_date' => $this->birth_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

@@ -79,4 +79,18 @@ class BabySitterController extends Controller
 
         return response()->json(['message' => 'Terminated']);
     }
+
+    public function rate(BabySitterUser $babySitter)
+    {
+        request()->validate([
+            'rating' => 'required|numeric|min:1|max:5',
+        ]);
+
+        $babySitter->rates()->create([
+            'parent_id' => auth()->id(),
+            'rating' => request()->rating,
+        ]);
+
+        return BabySitterUserResource::make($babySitter->load('rates'));
+    }
 }
