@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('list', [BabySitterController::class, 'listInvitations'])->name('babysitter.invitations.list');
             Route::put('{invitation}', [BabySitterController::class, 'respondToInvitation'])->name('babysitter.invitations.respond');
         });
+
         Route::post('{babySitter}/rate', [BabySitterController::class, 'rate'])->name('babysitter.rate')->middleware('is-parent');
     });
 });

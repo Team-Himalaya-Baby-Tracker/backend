@@ -86,10 +86,12 @@ class BabySitterController extends Controller
             'rating' => 'required|numeric|min:1|max:5',
         ]);
 
-        $babySitter->rates()->create([
+        $babySitter->rates()->updateOrCreate([
             'parent_id' => auth()->id(),
-            'rating' => request()->rating,
-        ]);
+        ],
+            [
+                'rating' => request()->rating,
+            ]);
 
         return BabySitterUserResource::make($babySitter->load('rates'));
     }

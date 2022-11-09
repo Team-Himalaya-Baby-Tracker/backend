@@ -28,7 +28,8 @@ class UpdateProfileRequest extends FormRequest
             'name' => ['nullable', 'min:2'],
             'email' => ['nullable', 'email:dns,rfc', 'unique:users,email'],
             'password' => ['nullable', 'min:8', new isValidPasswordRule()],
-            'birth_date' => ['nullable', 'before:-14 years' ,'date'],
+            'current_password' => ['required_with:password'],
+            'birth_date' => ['nullable', 'before:-14 years', 'date'],
             'description' => ['nullable', 'min:10'],
         ];
     }
