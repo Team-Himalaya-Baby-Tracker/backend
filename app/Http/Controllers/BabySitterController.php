@@ -13,7 +13,8 @@ class BabySitterController extends Controller
 {
     public function index()
     {
-        $babySitters = BabySitterUser::all();
+        $babySitters = BabySitterUser::with('rates')->get();
+        $babySitters = $babySitters->sortByDesc('rate');
         return BabySitterUserResource::collection($babySitters);
     }
 
