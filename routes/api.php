@@ -32,6 +32,7 @@ Route::post('reset-password', ResetPassword::class)->middleware('guest');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('me', [MeController::class, 'me']);
+    Route::put('me', [MeController::class, 'update']);
     Route::group(['prefix'=>'my-baby-sitter-invitations'], function () {
         Route::get('/', [ParentController::class, 'myBabySitterInvitations']);
         Route::put('/{invitation}', [ParentController::class, 'updateBabySitterInvitation']);

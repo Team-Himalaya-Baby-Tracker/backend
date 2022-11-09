@@ -15,6 +15,7 @@ class SignupRequest extends FormRequest
             'password' => ['required', 'min:8', new isValidPasswordRule()],
             'type' => ['required', 'in:parent,baby_sitter'],
             'birth_date' => ['required', 'before:-14 years' ,'date'],
+            'description' => ['required_if:type,baby_sitter', 'min:10'],
         ];
     }
 
