@@ -14,8 +14,8 @@ class AddCreatorMorphDiaperDataTable extends Migration
     public function up()
     {
         Schema::table('diaper_data', function (Blueprint $table) {
-            $table->unsignedBigInteger('creator_id')->nullable()->change();
-            $table->string('creator_type')->nullable()->change();
+            $table->unsignedBigInteger('creator_id')->nullable();
+            $table->string('creator_type')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AddCreatorMorphDiaperDataTable extends Migration
     public function down()
     {
         Schema::table('diaper_data', function (Blueprint $table) {
-            $table->unsignedBigInteger('creator_id')->nullable(false)->change();
-            $table->string('creator_type')->nullable(false)->change();
+            $table->unsignedBigInteger('creator_id')->nullable(false);
+            $table->string('creator_type')->nullable(false);
         });
     }
 }
