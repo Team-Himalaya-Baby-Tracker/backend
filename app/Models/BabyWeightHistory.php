@@ -10,4 +10,9 @@ class BabyWeightHistory extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function creator()
+    {
+        return $this->morphTo();
+    }
 }

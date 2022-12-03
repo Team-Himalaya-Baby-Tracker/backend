@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
 
     Route::get('babies', [BabiesController::class, 'index']);
-    Route::post('babies', [BabiesController::class, 'store'])->middleware('is-parent');
+    Route::post('babies', [BabiesController::class, 'store'])->middleware(['is-parent', 'attach-creator']);
     Route::get('babies/{baby}', [BabiesController::class, 'show']);
     Route::put('babies/{baby}', [BabiesController::class, 'update']);
     Route::delete('babies/{baby}', [BabiesController::class, 'destroy'])->middleware('is-parent');
@@ -48,17 +48,17 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         //*************
         Route::middleware('baby-sitter-access')->group(function () {
             Route::get('{baby}/diapers', [DiaperDataController::class, 'index']);
-            Route::post('{baby}/diapers', [DiaperDataController::class, 'store']);
+            Route::post('{baby}/diapers', [DiaperDataController::class, 'store'])->middleware('attach-creator');
             Route::get('{baby}/sizes', [BabySizeController::class, 'index']);
-            Route::post('{baby}/sizes', [BabySizeController::class, 'store']);
+            Route::post('{baby}/sizes', [BabySizeController::class, 'store'])->middleware('attach-creator');
             Route::get('{baby}/weights', [BabyWeightController::class, 'index']);
-            Route::post('{baby}/weights', [BabyWeightController::class, 'store']);
+            Route::post('{baby}/weights', [BabyWeightController::class, 'store'])->middleware('attach-creator');
 
             Route::get('{baby}/breast-feed', [BreastFeedRecordController::class, 'index']);
-            Route::post('{baby}/breast-feed', [BreastFeedRecordController::class, 'store']);
+            Route::post('{baby}/breast-feed', [BreastFeedRecordController::class, 'store'])->middleware('attach-creator');
 
             Route::get('{baby}/bottle-feed', [BottleFeedController::class, 'index']);
-            Route::post('{baby}/bottle-feed', [BottleFeedController::class, 'store']);
+            Route::post('{baby}/bottle-feed', [BottleFeedController::class, 'store'])->middleware('attach-creator');
         });
     });
     Route::group(['prefix' => 'invitations', 'middleware' => 'is-parent'], function () {

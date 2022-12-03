@@ -9,4 +9,9 @@ class BreastFeedRecord extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function creator()
+    {
+        return $this->morphTo();
+    }
 }

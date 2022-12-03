@@ -10,5 +10,12 @@ class DiaperData extends Model
     use HasFactory;
 
     protected $casts = ['type' => 'array'];
+    protected $fillable = ['type', 'time', 'creator_id', 'creator_type'];
     protected $guarded = [];
+
+    public function creator()
+    {
+        return $this->morphTo();
+    }
+
 }
