@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\BabySitterInvitation;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BabySitterUserResource extends JsonResource
@@ -20,6 +21,7 @@ class BabySitterUserResource extends JsonResource
             'email' => $this->email,
             'photo' => $this->photo,
             'type' => $this->type,
+            'can_rate' => $this->canRate(),
             'rate' => $this->rate,
             'birth_date' => $this->birth_date,
             'creator_id' => $this->creator_id,
@@ -27,5 +29,15 @@ class BabySitterUserResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
+    }
+
+    private function canRate()
+    {
+        $invitations = BabySitterInvitation::query()
+            ->where('parent_id', auth()->id())
+            ->where('baby_sitter_id', $this->id)
+            ->whereNotNull('accepted_at')
+            ->get();
+        return $invitations->count() > 0;
     }
 }
