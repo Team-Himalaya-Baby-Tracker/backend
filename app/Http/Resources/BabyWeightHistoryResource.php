@@ -18,6 +18,8 @@ class BabyWeightHistoryResource extends JsonResource
             'id' => $this->id,
             'baby_id' => $this->baby_id,
             'weight' => $this->weight,
+            'creator_id' => $this->creator_id,
+            'creator_type' => $this->creator_type,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

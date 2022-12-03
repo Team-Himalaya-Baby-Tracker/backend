@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
 		    'my-baby' => \App\Http\Middleware\BabyBelongsToUserMiddleware::class,
             'baby-sitter-access' => \App\Http\Middleware\BabySitterAccessMiddleware::class,
             'is-parent' => \App\Http\Middleware\IsParentMiddleware::class,
+            'attach-creator' => \App\Http\Middleware\AttachCreatorMiddleware::class,
     ];
 }

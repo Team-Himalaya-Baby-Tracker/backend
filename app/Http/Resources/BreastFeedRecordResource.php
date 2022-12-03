@@ -21,6 +21,8 @@ class BreastFeedRecordResource extends JsonResource
             'right_boob' => $this->right_boob,
             'amount' => $this->amount,
             'notes' => $this->notes,
+            'creator_id' => $this->creator_id,
+            'creator_type' => $this->creator_type,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -20,6 +20,8 @@ class DiaperDataResource extends JsonResource
             'type' => $this->type,
             'notes' => $this->notes,
             'wet_type' => $this->wet_type,
+            'creator_id' => $this->creator_id,
+            'creator_type' => $this->creator_type,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
